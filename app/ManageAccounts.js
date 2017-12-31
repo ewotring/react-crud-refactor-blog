@@ -62,6 +62,10 @@ export default class ManageAccounts extends React.Component {
     });
   }
 
+  showAccount(accountToShow) {
+
+  }
+
   modifyAccount(accountToModify) {
     var accountList = JSON.parse(localStorage.getItem('AccountList'));
     var index = accountList.findIndex(function(account) {
@@ -102,7 +106,7 @@ export default class ManageAccounts extends React.Component {
     return(
       <div>
         {this.state.ShowFilterUI && <FilterAndAdd OnAdd={this.showNewAccountScreen.bind(this)} OnFilter={this.filterAccountList.bind(this)} />}
-        {this.state.ShowAccountList && <AccountList Accounts={this.state.AccountList} OnEdit={this.showModifyAccountScreen.bind(this)} OnDelete={this.removeAccount.bind(this)} />}
+        {this.state.ShowAccountList && <AccountList Accounts={this.state.AccountList} OnRead={this.showAccount.bind(this)} OnEdit={this.showModifyAccountScreen.bind(this)} OnDelete={this.removeAccount.bind(this)} />}
         {this.state.ShowNewAccountUI && <NewAccount OnSubmit={this.addNewAccount.bind(this)} />}
         {this.state.ShowModifyAccountUI && <ModifyAccount Account={this.state.AccountToBeModified} OnSubmit={this.modifyAccount.bind(this)} />}
       </div>

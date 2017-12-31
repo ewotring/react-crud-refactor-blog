@@ -3,6 +3,9 @@ export default class AccountList extends React.Component {
   constructor(props) {
     super(props);
   }
+  handleButtonClickRead(account) {
+    this.props.OnRead(account)
+  }
   handleButtonClickEdit(account) {
     this.props.OnEdit(account);
   }
