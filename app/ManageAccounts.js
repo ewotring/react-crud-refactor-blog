@@ -4,6 +4,7 @@ import AccountList from './AccountList.js';
 import NewAccount from './NewAccount.js';
 import FilterAndAdd from './Filter.js';
 import ModifyAccount from './ModifyAccount.js';
+import ShowAccount from './ShowAccount.js';
 export default class ManageAccounts extends React.Component {
   constructor(props) {
     super(props);
@@ -18,6 +19,7 @@ export default class ManageAccounts extends React.Component {
       ShowModifyAccountUI: false,
       ShowAccountList : true,
       ShowFilterUI: true,
+      ShowAccountUI: false,
       AccountList: JSON.parse(localStorage.getItem('AccountList'))
     }
   }
@@ -63,7 +65,14 @@ export default class ManageAccounts extends React.Component {
   }
 
   showAccount(accountToShow) {
-
+    this.setState({
+      ShowNewAccountUI : false,
+      ShowModifyAccountUI: false,
+      ShowAccountList : false,
+      ShowFilterUI: false,
+      ShowAccountUI: true,
+      AccountToShow: accountToShow
+    })
   }
 
   modifyAccount(accountToModify) {
@@ -109,6 +118,7 @@ export default class ManageAccounts extends React.Component {
         {this.state.ShowAccountList && <AccountList Accounts={this.state.AccountList} OnRead={this.showAccount.bind(this)} OnEdit={this.showModifyAccountScreen.bind(this)} OnDelete={this.removeAccount.bind(this)} />}
         {this.state.ShowNewAccountUI && <NewAccount OnSubmit={this.addNewAccount.bind(this)} />}
         {this.state.ShowModifyAccountUI && <ModifyAccount Account={this.state.AccountToBeModified} OnSubmit={this.modifyAccount.bind(this)} />}
+        {this.state.ShowAccountUI && <ShowAccount Account={this.state.AccountToShow} />}
       </div>
     );
   }
