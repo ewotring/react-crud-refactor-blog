@@ -28,6 +28,10 @@ export default class AccountList extends React.Component {
                 <td>{account.UserId}</td>
                 <td>{account.Password}</td>
                 <td>
+                  <button type="button" className="btn btn-primary" onClick={() => this.handleButtonClickRead(account)}>
+                    <span className="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                  </button>
+                  &nbsp;&nbsp;
                   <button type="button" className="btn btn-primary" onClick={() => this.handleButtonClickEdit(account)}>
                     <span className="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                   </button>
