@@ -7,7 +7,8 @@ export default class ModifyAccount extends React.Component {
       AccountName: props.Account.AccountName,
       Website: props.Account.Website,
       UserId: props.Account.UserId,
-      Password: props.Account.Password
+      Password: props.Account.Password,
+      Picture: props.Account.Picture
     }
   }
 

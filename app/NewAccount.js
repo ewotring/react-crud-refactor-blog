@@ -8,7 +8,8 @@ export default class NewAccount extends React.Component {
       AccountName: '',
       Website: '',
       UserId: '',
-      Password: ''
+      Password: '',
+      Picture: ''
     };
   }
 
@@ -17,7 +18,8 @@ export default class NewAccount extends React.Component {
       AccountName: this.state.AccountName,
       Website: this.state.Website,
       UserId: this.state.UserId,
-      Password: this.state.Password
+      Password: this.state.Password,
+      Picture: this.state.Picture
     };
     this.props.OnSubmit(account);
   }
@@ -44,6 +46,12 @@ export default class NewAccount extends React.Component {
     this.setState({
       Password: e.target.value
     })
+  }
+
+  handlePictureChange(e) {
+    this.setState({
+      Picture: e.target.value
+    });
   }
 
   isUserEntryValid(e) {
@@ -74,7 +82,7 @@ export default class NewAccount extends React.Component {
         </div>
         <div className="form-group">
           <label htmlFor="fileUpload">Upload File</label>
-          <input type="file" className="form-control" id="fileUpload" name="blogPic" accept="image/*" />
+          <input type="file" className="form-control" id="fileUpload" name="blogPic" accept="image/*" onChange={this.handlePictureChange.bind(this)} />
         </div>
         <button type="button" className="btn btn-default" onClick={() => this.handleSubmit()}>Submit</button>
       </form>
