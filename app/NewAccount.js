@@ -72,6 +72,10 @@ export default class NewAccount extends React.Component {
           <label htmlFor="password">Password</label>
           <input type="text" className="form-control" id="password" placeholder="Password Name" value={this.state.Password} onChange={this.handlePasswordChange.bind(this)} />
         </div>
+        <div className="form-group">
+          <label htmlFor="fileUpload">Upload File</label>
+          <input type="file" className="form-control" id="fileUpload" name="blogPic" accept="image/*" />
+        </div>
         <button type="button" className="btn btn-default" onClick={() => this.handleSubmit()}>Submit</button>
       </form>
     );

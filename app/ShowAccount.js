@@ -14,13 +14,7 @@ export default class ModifyAccount extends React.Component {
 // Can this handleSubmit be pared down?
 // Shouldn't it be a handleClick?
   handleSubmit() {
-    var account = {
-      AccountName: this.state.AccountName,
-      Website: this.state.Website,
-      UserId: this.state.UserId,
-      Password: this.state.Password
-    };
-    this.props.OnSubmit(account)
+    this.props.OnSubmit()
   }
 
   isUserEntryValid() {
@@ -46,6 +40,10 @@ export default class ModifyAccount extends React.Component {
         <div>
           <h4>Password</h4>
           <p>{this.state.Password}</p>
+        </div>
+        <div>
+          <h4>Picture</h4>
+          <p>{this.state.Picture}</p>
         </div>
         <button type="button" className="btn btn-default" onClick={() => this.handleSubmit()}>Back</button>
       </div>
