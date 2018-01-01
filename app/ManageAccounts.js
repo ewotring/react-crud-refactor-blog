@@ -54,7 +54,7 @@ export default class ManageAccounts extends React.Component {
     var accountList = JSON.parse(localStorage.getItem('AccountList'));
     accountList.push(account);
     localStorage.setItem("AccountList",JSON.stringify(accountList));
-
+    console.log(account);
     this.setState({
       ShowNewAccountUI : false,
       ShowModifyAccountUI: false,

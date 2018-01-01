@@ -49,8 +49,9 @@ export default class NewAccount extends React.Component {
   }
 
   handlePictureChange(e) {
+    console.log(e.target.files[0]);
     this.setState({
-      Picture: e.target.value
+      Picture: e.target.files[0]
     });
   }
 

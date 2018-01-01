@@ -3,6 +3,7 @@ import React from 'react';
 export default class ModifyAccount extends React.Component {
   constructor(props) {
     super(props);
+    console.log(props.Account.Picture);
     this.state = {
       AccountName: props.Account.AccountName,
       Website: props.Account.Website,
@@ -44,7 +45,7 @@ export default class ModifyAccount extends React.Component {
         </div>
         <div>
           <h4>Picture</h4>
-          <p>{this.state.Picture}</p>
+          <img src={ this.state.Picture } />
         </div>
         <button type="button" className="btn btn-default" onClick={() => this.handleSubmit()}>Back</button>
       </div>

@@ -84,7 +84,7 @@ export default class ModifyAccount extends React.Component {
           <label htmlFor="fileUpload">Upload File</label>
           <input type="file" className="form-control" id="fileUpload" name="blogPic" accept="image/*" onChange={this.handlePictureChange.bind(this)} />
         </div>
-        <button type="button" className="btn btn-default" onClick={() => this.handleSubmit()}>Submit</button>
+        <button type="button" className="btn btn-default" onClick={() => this.handleSubmit()}>Submit/Back</button>
       </form>
     );
   }
