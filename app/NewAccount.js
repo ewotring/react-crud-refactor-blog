@@ -51,7 +51,8 @@ export default class NewAccount extends React.Component {
   }
   // added onChange back in. This was needed to see what I entered into the fields.
   // Also, without the onChange, my entered values did not get stored.
-  // This responsibility might belong elsewhere, but this
+  // This responsibility might belong elsewhere
+// Want to preserve line breaks from textarea in show screen.
   render() {
     return(
       <form>
@@ -61,7 +62,7 @@ export default class NewAccount extends React.Component {
         </div>
         <div className="form-group">
           <label htmlFor="website">Website</label>
-          <input type="text" className="form-control" id="website" placeholder="Website" value={this.state.Website} onChange={this.handleWebsiteChange.bind(this)} />
+          <textarea className="form-control" id="website" placeholder="Website" value={this.state.Website} onChange={this.handleWebsiteChange.bind(this)}></textarea>
         </div>
         <div className="form-group">
           <label htmlFor="userid">User Id</label>
