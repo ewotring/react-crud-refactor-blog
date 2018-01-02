@@ -9,7 +9,8 @@ export default class NewAccount extends React.Component {
       Website: '',
       UserId: '',
       Password: '',
-      Picture: ''
+      Picture: '',
+      Comments: []
     };
   }
 
@@ -19,7 +20,8 @@ export default class NewAccount extends React.Component {
       Website: this.state.Website,
       UserId: this.state.UserId,
       Password: this.state.Password,
-      Picture: this.state.Picture
+      Picture: this.state.Picture,
+      Comments: this.state.Comments
     };
     this.props.OnSubmit(account);
   }
@@ -66,11 +68,11 @@ export default class NewAccount extends React.Component {
     return(
       <form>
         <div className="form-group">
-          <label htmlFor="accountName">Account Name</label>
+          <label htmlFor="accountName">Title</label>
           <input type="text" className="form-control" id="accountName" placeholder="Account Name" value={this.state.AccountName} onChange={this.handleAccountNameChange.bind(this)} />
         </div>
         <div className="form-group">
-          <label htmlFor="website">Website</label>
+          <label htmlFor="website">Body</label>
           <textarea className="form-control" id="website" placeholder="Website" value={this.state.Website} onChange={this.handleWebsiteChange.bind(this)}></textarea>
         </div>
         <div className="form-group">

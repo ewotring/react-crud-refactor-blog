@@ -81,13 +81,23 @@ export default class ManageAccounts extends React.Component {
     })
   }
 
-  showAccount(accountToShow) {
+  leaveAccount(accountToLeave) {
+    var accountList = JSON.parse(localStorage.getItem('AccountList'));
+    var index = accountList.findIndex(function(account) {
+      return accountToLeave.AccountName === account.AccountName;
+    });
+    if (index != -1)
+    {
+      accountList[index].Comments = accountToLeave.Comments;
+    }
+    localStorage.setItem('AccountList',JSON.stringify(accountList));
     this.setState({
       ShowNewAccountUI : false,
       ShowModifyAccountUI: false,
       ShowAccountList : true,
       ShowFilterUI: true,
-      ShowAccountUI: false
+      ShowAccountUI: false,
+      AccountList: JSON.parse(localStorage.getItem('AccountList'))
     })
   }
 
@@ -134,7 +144,7 @@ export default class ManageAccounts extends React.Component {
         {this.state.ShowAccountList && <AccountList Accounts={this.state.AccountList} OnRead={this.showAccountScreen.bind(this)} OnEdit={this.showModifyAccountScreen.bind(this)} OnDelete={this.removeAccount.bind(this)} />}
         {this.state.ShowNewAccountUI && <NewAccount OnSubmit={this.addNewAccount.bind(this)} />}
         {this.state.ShowModifyAccountUI && <ModifyAccount Account={this.state.AccountToBeModified} OnSubmit={this.modifyAccount.bind(this)} />}
-        {this.state.ShowAccountUI && <ShowAccount Account={this.state.AccountToShow} OnSubmit={this.showAccount.bind(this)} />}
+        {this.state.ShowAccountUI && <ShowAccount Account={this.state.AccountToShow} OnSubmit={this.leaveAccount.bind(this)} />}
       </div>
     );
   }
