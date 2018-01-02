@@ -2,6 +2,7 @@ import React from 'react';
 export default class AccountList extends React.Component {
   constructor(props) {
     super(props);
+    console.log(props);
   }
   handleButtonClickRead(account) {
     this.props.OnRead(account)
@@ -17,9 +18,8 @@ export default class AccountList extends React.Component {
       <table className="table table-stripped">
         <thead>
           <tr>
-            <th>Account</th>
+            <th>Title</th>
             <th>User Id</th>
-            <th>Password</th>
             <th></th>
           </tr>
         </thead>
@@ -29,7 +29,6 @@ export default class AccountList extends React.Component {
               <tr key={account.AccountName}>
                 <td><a href={account.Website}>{account.AccountName}</a></td>
                 <td>{account.UserId}</td>
-                <td>{account.Password}</td>
                 <td>
                   <button type="button" className="btn btn-primary" onClick={() => this.handleButtonClickRead(account)}>
                     <span className="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
