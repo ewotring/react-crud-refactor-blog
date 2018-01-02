@@ -1,6 +1,7 @@
 import React from 'react';
+import Comments from './Comments.js';
 
-export default class ModifyAccount extends React.Component {
+export default class ShowAccount extends React.Component {
   constructor(props) {
     super(props);
     const myRe = new RegExp(":(.*)");
@@ -50,6 +51,7 @@ export default class ModifyAccount extends React.Component {
           <img src={`${this.state.Picture}`} />
         </div>
         <button type="button" className="btn btn-default" onClick={() => this.handleSubmit()}>Back</button>
+        <Comments />
       </div>
     );
   }
