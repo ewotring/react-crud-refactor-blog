@@ -40,7 +40,7 @@ export default class ModifyAccount extends React.Component {
 
   handlePictureChange(e) {
     this.setState({
-      Picture: e.target.value
+      Picture: e.target.files[0]
     });
   }
 

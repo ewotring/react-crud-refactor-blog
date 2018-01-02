@@ -3,7 +3,7 @@ import React from 'react';
 export default class ModifyAccount extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props.Account.Picture);
+    console.log(props.Account);
     this.state = {
       AccountName: props.Account.AccountName,
       Website: props.Account.Website,
@@ -13,7 +13,6 @@ export default class ModifyAccount extends React.Component {
     }
   }
 
-// Can this handleSubmit be pared down?
 // Shouldn't it be a handleClick?
   handleSubmit() {
     this.props.OnSubmit()
@@ -22,8 +21,8 @@ export default class ModifyAccount extends React.Component {
   isUserEntryValid() {
     return true;
   }
-// gonna want values with state in order to see current settings
-// Does the Account Name field really need to be disabled?
+  // Having trouble getting image to display.
+  // Looks like it's not passing through the app correctly
   render() {
     return(
       <div>
@@ -45,7 +44,7 @@ export default class ModifyAccount extends React.Component {
         </div>
         <div>
           <h4>Picture</h4>
-          <img src={ this.state.Picture } />
+          <p>{this.state.Picture}</p>
         </div>
         <button type="button" className="btn btn-default" onClick={() => this.handleSubmit()}>Back</button>
       </div>
