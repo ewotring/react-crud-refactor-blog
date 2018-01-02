@@ -22,10 +22,10 @@ export default class CommentList extends React.Component {
         </thead>
         <tbody>
           {
-            this.props.Comments.map((account) =>
-              <tr key={account.Comment}>
-                <td>{account.UserId}</td>
-                <td>{account.Comment}</td>
+            this.props.Comments.map((blog) =>
+              <tr key={blog.Comment}>
+                <td>{blog.UserId}</td>
+                <td>{blog.Comment}</td>
                 <td>
                   <button type="button" className="btn btn-primary" onClick={() => this.handleButtonClickDelete(comment)}>
                     <span className="glyphicon glyphicon-remove" aria-hidden="true"></span>

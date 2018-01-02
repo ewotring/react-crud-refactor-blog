@@ -2,29 +2,29 @@ import React from 'react';
 import Comments from './Comments.js';
 import NewComment from './NewComment.js';
 
-export default class ShowAccount extends React.Component {
+export default class ShowBlog extends React.Component {
   constructor(props) {
     super(props);
     const myRe = new RegExp(":(.*)");
-    const dataUrl = myRe.exec(props.Account.Picture);
+    const dataUrl = myRe.exec(props.Blog.Picture);
     console.log(dataUrl[1]);
     this.state = {
-      AccountName: props.Account.AccountName,
-      Website: props.Account.Website,
-      UserId: props.Account.UserId,
-      Password: props.Account.Password,
+      BlogName: props.Blog.BlogName,
+      Body: props.Blog.Body,
+      UserId: props.Blog.UserId,
+      Reblogger: props.Blog.Reblogger,
       Picture: dataUrl[1],
-      Comments: props.Account.Comments
+      Comments: props.Blog.Comments
     }
   }
 
 // Shouldn't it be a handleClick?
   handleSubmit() {
     const post = {
-      AccountName: this.state.AccountName,
-      Website: this.state.Website,
+      BlogName: this.state.BlogName,
+      Body: this.state.Body,
       UserId: this.state.UserId,
-      Password: this.state.Password,
+      Reblogger: this.state.Reblogger,
       Picture: this.state.Picture,
       Comments: this.state.Comments
     }
@@ -63,11 +63,11 @@ export default class ShowAccount extends React.Component {
       <div>
         <div>
           <h4>Title</h4>
-          <p>{this.state.AccountName}</p>
+          <p>{this.state.BlogName}</p>
         </div>
         <div>
           <h4>Body</h4>
-          <p>{this.state.Website}</p>
+          <p>{this.state.Body}</p>
         </div>
         <div>
           <h4>User Id</h4>
@@ -75,7 +75,7 @@ export default class ShowAccount extends React.Component {
         </div>
         <div>
           <h4>Reblogged by</h4>
-          <p>{this.state.Password}</p>
+          <p>{this.state.Reblogger}</p>
         </div>
         <div>
           <h4>Picture</h4>

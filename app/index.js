@@ -2,9 +2,9 @@ require('bootstrap/dist/css/bootstrap.min.css');
 require('./css/main.css');
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ManageAccounts from './ManageAccounts.js'
+import ManageBlogs from './ManageBlogs.js'
 
 ReactDOM.render(
-  <ManageAccounts />,
+  <ManageBlogs />,
   document.getElementById('app')
 );
