@@ -5,7 +5,7 @@ export default class ReBlog extends React.Component {
     super(props);
 
     this.state = {
-      AccountName: props.Account.AccountName,
+      AccountName: "Reblog ".concat(props.Account.AccountName),
       Website: props.Account.Website,
       UserId: props.Account.UserId,
       Password: props.Account.Password,
