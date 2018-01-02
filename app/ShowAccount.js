@@ -3,13 +3,15 @@ import React from 'react';
 export default class ModifyAccount extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props.Account);
+    const myRe = new RegExp(":(.*)");
+    const dataUrl = myRe.exec(props.Account.Picture);
+    console.log(dataUrl[1]);
     this.state = {
       AccountName: props.Account.AccountName,
       Website: props.Account.Website,
       UserId: props.Account.UserId,
       Password: props.Account.Password,
-      Picture: props.Account.Picture
+      Picture: dataUrl[1]
     }
   }
 
@@ -22,7 +24,8 @@ export default class ModifyAccount extends React.Component {
     return true;
   }
   // Having trouble getting image to display.
-  // Looks like it's not passing through the app correctly
+  // The blob url doesn't work in the img tag.
+  // Timebox out; I've spent too much time on this task.
   render() {
     return(
       <div>
@@ -44,7 +47,7 @@ export default class ModifyAccount extends React.Component {
         </div>
         <div>
           <h4>Picture</h4>
-          <p>{this.state.Picture}</p>
+          <img src={`${this.state.Picture}`} />
         </div>
         <button type="button" className="btn btn-default" onClick={() => this.handleSubmit()}>Back</button>
       </div>
