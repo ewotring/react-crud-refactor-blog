@@ -74,6 +74,10 @@ export default class ShowAccount extends React.Component {
           <p>{this.state.UserId}</p>
         </div>
         <div>
+          <h4>Reblogged by</h4>
+          <p>{this.state.Password}</p>
+        </div>
+        <div>
           <h4>Picture</h4>
           <img src={`${this.state.Picture}`} />
         </div>

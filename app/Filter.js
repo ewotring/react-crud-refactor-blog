@@ -16,7 +16,7 @@ export default class FilterAndAdd extends React.Component {
     return(
       <form>
         <div className="form-group col-md-4">
-          <input type="text" className="form-control" id="filter" placeholder="Search" onChange={this.handleFilterChange.bind(this)} />
+          <input type="text" className="form-control" id="filter" placeholder="Search by title" onChange={this.handleFilterChange.bind(this)} />
         </div>
         <div className="col-md-2">
           <button type="button" className="btn btn-primary" onClick={this.onAdd.bind(this)}>

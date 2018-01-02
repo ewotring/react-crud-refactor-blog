@@ -31,13 +31,6 @@ export default class ModifyAccount extends React.Component {
     });
   }
 
-  handlePasswordChange(e) {
-    this.setState({
-      Password: e.target.value
-    });
-  }
-
-
   handlePictureChange(e) {
     this.setState({
       Picture: e.target.files[0]
@@ -65,20 +58,16 @@ export default class ModifyAccount extends React.Component {
     return(
       <form>
         <div className="form-group">
-          <label htmlFor="accountName">Account Name</label>
-          <input type="text" className="form-control" id="accountName" value={this.state.AccountName} disabled="true" onChange={this.handleAccountNameChange.bind(this)} />
+          <label htmlFor="accountName">Title</label>
+          <input type="text" className="form-control" id="accountName" value={this.state.AccountName} onChange={this.handleAccountNameChange.bind(this)} />
         </div>
         <div className="form-group">
-          <label htmlFor="website">Website</label>
+          <label htmlFor="website">Body</label>
           <textarea className="form-control" rows="10" id="website" value={this.state.Website} onChange={this.handleWebsiteChange.bind(this)}></textarea>
         </div>
         <div className="form-group">
           <label htmlFor="userid">User Id</label>
-          <input type="text" className="form-control" id="userid" value={this.state.UserId} onChange={this.handleUserIdChange.bind(this)} />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input type="text" className="form-control" id="password" value={this.state.Password} onChange={this.handlePasswordChange.bind(this)} />
+          <input type="text" className="form-control" id="userid" value={this.state.UserId} disabled="true" onChange={this.handleUserIdChange.bind(this)} />
         </div>
         <div className="form-group">
           <label htmlFor="fileUpload">Upload File</label>

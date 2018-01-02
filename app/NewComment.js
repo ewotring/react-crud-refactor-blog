@@ -46,7 +46,7 @@ export default class NewComment extends React.Component {
         </div>
         <div className="form-group">
           <label htmlFor="comment">Comment</label>
-          <textarea className="form-control" id="comment" placeholder="Comment Name" value={this.state.Comment} onChange={this.handleCommentChange.bind(this)}></textarea>
+          <textarea className="form-control" rows="5" id="comment" placeholder="Comment Name" value={this.state.Comment} onChange={this.handleCommentChange.bind(this)}></textarea>
         </div>
         <button type="button" className="btn btn-default" onClick={() => this.handleSubmit()}>Submit</button>
       </form>

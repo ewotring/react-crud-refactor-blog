@@ -3,7 +3,6 @@ import React from 'react';
 export default class CommentList extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props);
   }
   handleButtonClickEdit(comment) {
     this.props.OnEdit(comment);
