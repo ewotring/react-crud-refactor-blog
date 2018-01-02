@@ -14,3 +14,5 @@ Sticking points:
 The two big points that I would still like to implement are user sign-in and sign-up and a proper back-end server with a database in place of using local storage.
 
 I also would like to write tests to ensure that refactoring does not harm the functionality.
+
+The user sign-in does not store any data yet; that is the next task. Then I itend to tie in the blog posts with the back-end>
