@@ -6,6 +6,7 @@ import FilterAndAdd from './Filter.js';
 import ModifyBlog from './ModifyBlog.js';
 import ShowBlog from './ShowBlog.js';
 import ReBlog from './ReBlog.js';
+import SignIn from './SignIn.js';
 export default class ManageBlogs extends React.Component {
   constructor(props) {
     super(props);
@@ -167,6 +168,7 @@ export default class ManageBlogs extends React.Component {
   render() {
     return(
       <div>
+        <SignIn />
         {this.state.ShowFilterUI && <FilterAndAdd OnAdd={this.showNewBlogScreen.bind(this)} OnFilter={this.filterBlogList.bind(this)} />}
         {this.state.ShowBlogList && <BlogList Blogs={this.state.BlogList} OnRead={this.showBlogScreen.bind(this)} OnEdit={this.showModifyBlogScreen.bind(this)} OnDelete={this.removeBlog.bind(this)} OnReBlog={this.showReBlogScreen.bind(this)} />}
         {this.state.ShowNewBlogUI && <NewBlog Blogs={this.state.BlogList} OnSubmit={this.addNewBlog.bind(this)} />}
