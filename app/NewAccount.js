@@ -10,20 +10,31 @@ export default class NewAccount extends React.Component {
       UserId: '',
       Password: '',
       Picture: '',
-      Comments: []
+      Comments: [],
+      AccountList: this.props.Accounts
     };
   }
 
   handleSubmit() {
-    var account = {
-      AccountName: this.state.AccountName,
-      Website: this.state.Website,
-      UserId: this.state.UserId,
-      Password: this.state.Password,
-      Picture: this.state.Picture,
-      Comments: this.state.Comments
-    };
-    this.props.OnSubmit(account);
+    var accountNames = [];
+    this.state.AccountList.forEach(function(account) {
+      accountNames.push(account.AccountName);
+    });
+    console.log(accountNames);
+    console.log(this.state.AccountName);
+    if (!accountNames.includes(this.state.AccountName)) {
+      var account = {
+        AccountName: this.state.AccountName,
+        Website: this.state.Website,
+        UserId: this.state.UserId,
+        Password: this.state.Password,
+        Picture: this.state.Picture,
+        Comments: this.state.Comments
+      };
+      this.props.OnSubmit(account);
+    } else {
+      alert("Title must be unique.")
+    }
   }
 
   handleAccountNameChange(e) {
@@ -42,12 +53,6 @@ export default class NewAccount extends React.Component {
     this.setState({
       UserId: e.target.value
     });
-  }
-
-  handlePasswordChange(e) {
-    this.setState({
-      Password: e.target.value
-    })
   }
 
   handlePictureChange(e) {
@@ -73,15 +78,11 @@ export default class NewAccount extends React.Component {
         </div>
         <div className="form-group">
           <label htmlFor="website">Body</label>
-          <textarea className="form-control" id="website" placeholder="Website" value={this.state.Website} onChange={this.handleWebsiteChange.bind(this)}></textarea>
+          <textarea className="form-control" rows="10" id="website" placeholder="Website" value={this.state.Website} onChange={this.handleWebsiteChange.bind(this)}></textarea>
         </div>
         <div className="form-group">
           <label htmlFor="userid">User Id</label>
           <input type="text" className="form-control" id="userid" placeholder="User Name" value={this.state.UserId} onChange={this.handleUserIdChange.bind(this)} />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input type="text" className="form-control" id="password" placeholder="Password Name" value={this.state.Password} onChange={this.handlePasswordChange.bind(this)} />
         </div>
         <div className="form-group">
           <label htmlFor="fileUpload">Upload File</label>

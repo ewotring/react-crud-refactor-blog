@@ -5,6 +5,7 @@ import NewAccount from './NewAccount.js';
 import FilterAndAdd from './Filter.js';
 import ModifyAccount from './ModifyAccount.js';
 import ShowAccount from './ShowAccount.js';
+import ReBlog from './ReBlog.js';
 export default class ManageAccounts extends React.Component {
   constructor(props) {
     super(props);
@@ -20,11 +21,14 @@ export default class ManageAccounts extends React.Component {
       ShowAccountList : true,
       ShowFilterUI: true,
       ShowAccountUI: false,
+      ShowReBlogUI: false,
       AccountList: JSON.parse(localStorage.getItem('AccountList'))
     }
   }
 
   showNewAccountScreen() {
+    var accountList = JSON.parse(localStorage.getItem('AccountList'));
+
     this.setState({
       ShowNewAccountUI : true,
       ShowAccountList : false,
@@ -54,11 +58,8 @@ export default class ManageAccounts extends React.Component {
 // Also, printing AccountList to console after the setItem seems to drop the last item in the accountList object.
   addNewAccount(account) {
     var accountList = JSON.parse(localStorage.getItem('AccountList'));
-    console.log(account);
     accountList.push(account);
-    console.log(accountList);
     localStorage.setItem("AccountList",JSON.stringify(accountList));
-    console.log(this.state.AccountList);
     this.setState({
       ShowNewAccountUI : false,
       ShowModifyAccountUI: false,
@@ -66,18 +67,44 @@ export default class ManageAccounts extends React.Component {
       ShowFilterUI: true,
       AccountList: JSON.parse(localStorage.getItem('AccountList'))
     });
-    console.log(this.state.AccountList);
   }
 
   showAccountScreen(accountToShow) {
-    console.log(accountToShow);
     this.setState({
       ShowNewAccountUI : false,
       ShowModifyAccountUI: false,
       ShowAccountList : false,
       ShowFilterUI: false,
       ShowAccountUI: true,
+      ShowReBlogUI: false,
       AccountToShow: accountToShow
+    })
+  }
+
+  showReBlogScreen(accountToReBlog) {
+    this.setState({
+      ShowNewAccountUI : false,
+      ShowModifyAccountUI: false,
+      ShowAccountList : false,
+      ShowFilterUI: false,
+      ShowAccountUI: false,
+      ShowReBlogUI: true,
+      AccountToReBlog: accountToReBlog
+    })
+  }
+
+  reBlog(accountToReBlog) {
+    var accountList = JSON.parse(localStorage.getItem('AccountList'));
+    accountList.push(accountToReBlog);
+    localStorage.setItem("AccountList",JSON.stringify(accountList));
+    this.setState({
+      ShowNewAccountUI : false,
+      ShowModifyAccountUI: false,
+      ShowAccountList : true,
+      ShowFilterUI: true,
+      ShowAccountUI: false,
+      ShowReBlogUI: false,
+      AccountList: JSON.parse(localStorage.getItem('AccountList'))
     })
   }
 
@@ -141,10 +168,11 @@ export default class ManageAccounts extends React.Component {
     return(
       <div>
         {this.state.ShowFilterUI && <FilterAndAdd OnAdd={this.showNewAccountScreen.bind(this)} OnFilter={this.filterAccountList.bind(this)} />}
-        {this.state.ShowAccountList && <AccountList Accounts={this.state.AccountList} OnRead={this.showAccountScreen.bind(this)} OnEdit={this.showModifyAccountScreen.bind(this)} OnDelete={this.removeAccount.bind(this)} />}
-        {this.state.ShowNewAccountUI && <NewAccount OnSubmit={this.addNewAccount.bind(this)} />}
-        {this.state.ShowModifyAccountUI && <ModifyAccount Account={this.state.AccountToBeModified} OnSubmit={this.modifyAccount.bind(this)} />}
+        {this.state.ShowAccountList && <AccountList Accounts={this.state.AccountList} OnRead={this.showAccountScreen.bind(this)} OnEdit={this.showModifyAccountScreen.bind(this)} OnDelete={this.removeAccount.bind(this)} OnReBlog={this.showReBlogScreen.bind(this)} />}
+        {this.state.ShowNewAccountUI && <NewAccount Accounts={this.state.AccountList} OnSubmit={this.addNewAccount.bind(this)} />}
+        {this.state.ShowModifyAccountUI && <ModifyAccount Accounts={this.state.AccountList} Account={this.state.AccountToBeModified} OnSubmit={this.modifyAccount.bind(this)} />}
         {this.state.ShowAccountUI && <ShowAccount Account={this.state.AccountToShow} OnSubmit={this.leaveAccount.bind(this)} />}
+        {this.state.ShowReBlogUI && <ReBlog Account={this.state.AccountToReBlog} OnSubmit={this.reBlog.bind(this)} />}
       </div>
     );
   }
