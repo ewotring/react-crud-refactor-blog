@@ -49,12 +49,16 @@ export default class ManageAccounts extends React.Component {
       AccountList: newAccountList,
     });
   }
-
+// Cannot stringify File object
+// This might explain why I am losing my file
+// Also, printing AccountList to console after the setItem seems to drop the last item in the accountList object.
   addNewAccount(account) {
     var accountList = JSON.parse(localStorage.getItem('AccountList'));
+    console.log(account);
     accountList.push(account);
+    console.log(accountList);
     localStorage.setItem("AccountList",JSON.stringify(accountList));
-
+    console.log(this.state.AccountList);
     this.setState({
       ShowNewAccountUI : false,
       ShowModifyAccountUI: false,
@@ -62,9 +66,11 @@ export default class ManageAccounts extends React.Component {
       ShowFilterUI: true,
       AccountList: JSON.parse(localStorage.getItem('AccountList'))
     });
+    console.log(this.state.AccountList);
   }
 
   showAccountScreen(accountToShow) {
+    console.log(accountToShow);
     this.setState({
       ShowNewAccountUI : false,
       ShowModifyAccountUI: false,
