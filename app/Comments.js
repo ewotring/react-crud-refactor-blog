@@ -5,14 +5,11 @@ export default class CommentList extends React.Component {
     super(props);
     console.log(props);
   }
-  handleButtonClickRead(account) {
-    this.props.OnRead(account)
+  handleButtonClickEdit(comment) {
+    this.props.OnEdit(comment);
   }
-  handleButtonClickEdit(account) {
-    this.props.OnEdit(account);
-  }
-  handleButtonClickDelete(account) {
-    this.props.OnDelete(account);
+  handleButtonClickDelete(comment) {
+    this.props.OnDelete(comment);
   }
   render() {
     return(
@@ -31,15 +28,7 @@ export default class CommentList extends React.Component {
                 <td>{account.UserId}</td>
                 <td>{account.Comment}</td>
                 <td>
-                  <button type="button" className="btn btn-primary" onClick={() => this.handleButtonClickRead(account)}>
-                    <span className="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                  </button>
-                  &nbsp;&nbsp;
-                  <button type="button" className="btn btn-primary" onClick={() => this.handleButtonClickEdit(account)}>
-                    <span className="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                  </button>
-                  &nbsp;&nbsp;
-                  <button type="button" className="btn btn-primary" onClick={() => this.handleButtonClickDelete(account)}>
+                  <button type="button" className="btn btn-primary" onClick={() => this.handleButtonClickDelete(comment)}>
                     <span className="glyphicon glyphicon-remove" aria-hidden="true"></span>
                   </button>
                 </td>

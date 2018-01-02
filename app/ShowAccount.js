@@ -39,6 +39,19 @@ export default class ShowAccount extends React.Component {
     })
   }
 
+  removeComment(commentToRemove) {
+    const result = confirm("Please confirm comment removal");
+    if (result == false)
+      return;
+    const comments = this.state.Comments;
+    const newComments = comments.filter(function(commentRemoval) {
+      return commentRemoval.comment != commentToRemove.comment
+    });
+    this.setState({
+      Comments: newComments
+    });
+  }
+
   isUserEntryValid() {
     return true;
   }
@@ -66,7 +79,7 @@ export default class ShowAccount extends React.Component {
         </div>
         <button type="button" className="btn btn-default" onClick={() => this.handleSubmit()}>Back/Save Comments</button>
         <NewComment OnSubmit={this.addNewComment.bind(this)} />
-        <Comments Comments={this.state.Comments} />
+        <Comments Comments={this.state.Comments} OnDelete={this.removeComment.bind(this)} />
       </div>
     );
   }
