@@ -1,51 +1,51 @@
 import React from 'react';
 
-export default class NewAccount extends React.Component {
+export default class NewBlog extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      AccountName: '',
-      Website: '',
+      BlogName: '',
+      Body: '',
       UserId: '',
-      Password: '',
+      Reblogger: '',
       Picture: '',
       Comments: [],
-      AccountList: this.props.Accounts
+      BlogList: this.props.Blogs
     };
   }
 
   handleSubmit() {
-    var accountNames = [];
-    this.state.AccountList.forEach(function(account) {
-      accountNames.push(account.AccountName);
+    var blogNames = [];
+    this.state.BlogList.forEach(function(blog) {
+      blogNames.push(blog.BlogName);
     });
-    console.log(accountNames);
-    console.log(this.state.AccountName);
-    if (!accountNames.includes(this.state.AccountName)) {
-      var account = {
-        AccountName: this.state.AccountName,
-        Website: this.state.Website,
+    console.log(blogNames);
+    console.log(this.state.BlogName);
+    if (!blogNames.includes(this.state.BlogName)) {
+      var blog = {
+        BlogName: this.state.BlogName,
+        Body: this.state.Body,
         UserId: this.state.UserId,
-        Password: this.state.Password,
+        Reblogger: this.state.Reblogger,
         Picture: this.state.Picture,
         Comments: this.state.Comments
       };
-      this.props.OnSubmit(account);
+      this.props.OnSubmit(blog);
     } else {
       alert("Title must be unique.")
     }
   }
 
-  handleAccountNameChange(e) {
+  handleBlogNameChange(e) {
     this.setState({
-      AccountName: e.target.value
+      BlogName: e.target.value
     });
   }
 
-  handleWebsiteChange(e) {
+  handleBodyChange(e) {
     this.setState({
-      Website: e.target.value
+      Body: e.target.value
     });
   }
 
@@ -73,12 +73,12 @@ export default class NewAccount extends React.Component {
     return(
       <form>
         <div className="form-group">
-          <label htmlFor="accountName">Title</label>
-          <input type="text" className="form-control" id="accountName" placeholder="Account Name" value={this.state.AccountName} onChange={this.handleAccountNameChange.bind(this)} />
+          <label htmlFor="blogName">Title</label>
+          <input type="text" className="form-control" id="blogName" placeholder="Blog Name" value={this.state.BlogName} onChange={this.handleBlogNameChange.bind(this)} />
         </div>
         <div className="form-group">
-          <label htmlFor="website">Body</label>
-          <textarea className="form-control" rows="10" id="website" placeholder="Website" value={this.state.Website} onChange={this.handleWebsiteChange.bind(this)}></textarea>
+          <label htmlFor="body">Body</label>
+          <textarea className="form-control" rows="10" id="body" placeholder="Body" value={this.state.Body} onChange={this.handleBodyChange.bind(this)}></textarea>
         </div>
         <div className="form-group">
           <label htmlFor="userid">User Id</label>
